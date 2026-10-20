@@ -8,15 +8,13 @@ canvas.pack()
 
 
 
-o = canvas.create_oval(80, 30, 140, 150, fill="blue")
 
-input()
 # Task (7/12): Draw on canvas
 
 # Task (8/12): Define a new function to_canvas_coords(canvas, x)
-def to_cavas_coords(canvas, u):
-    width = canvas.winfo_reqheight()
-    height= canvas.winfo_reqwidth()
+def to_canvas_coords(canvas, u):
+    width = canvas.winfo_reqwidth()
+    height = canvas.winfo_reqheight()
     scale= height / 20
     x= width / 2 + scale * u.x
     y= height / 2 - scale * u.y
@@ -29,15 +27,15 @@ def to_cavas_coords(canvas, u):
 # Task (10/12): Define a new function move_oval_to(o, u1, u2)
 
 def move_oval_to(canvas, o, u1, u2):
-    v1 = to_cavas_coords(canvas, u1)
-    v2 = to_cavas_coords(canvas, u2)
+    v1 = to_canvas_coords(canvas, u1)
+    v2 = to_canvas_coords(canvas, u2)
     canvas.coords(o, v1.x, v1.y, v2.x, v2.y)
 
 
 
 # Task (11/12): Define a new function create_oval(canvas, particle)
 def create_oval(canvas, particle):
-    o = canvas.create_oval(0, 0, 10, 10, fill=charge_color(particle))
+    o = canvas.create_oval(0, 0, 10, 10, fill="blue")
     top_left, bottom_right = particle.bounding_box()
     move_oval_to(canvas, o, top_left, bottom_right)
     return o
